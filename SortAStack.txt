@@ -1,0 +1,23 @@
+#include <bits/stdc++.h> 
+void sortedInsert(stack<int> &s,int n){
+    if(s.empty() || !s.empty() && s.top()<n){
+        s.push(n);
+        return;
+    }
+    int a=s.top();
+    s.pop();
+    sortedInsert(s,n);
+    s.push(a);
+}
+void sortStack(stack<int> &stack)
+{    
+    //base case
+    if(stack.empty()){
+        return;    
+    }
+    int a=stack.top();
+    stack.pop();
+    sortStack(stack);
+    sortedInsert(stack,a);
+    
+}
